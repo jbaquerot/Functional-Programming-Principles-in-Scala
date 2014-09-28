@@ -1,0 +1,8 @@
+package week2
+
+object Rational {
+  class Rationl(x: Int, y: Int){
+  	def numer = x
+  	def denom = y
+  }
+}

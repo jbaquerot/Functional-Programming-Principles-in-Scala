@@ -1,0 +1,18 @@
+[0m[[0minfo[0m] [0m[32mFunSetSuite:[0m[0m
+[0m[[0minfo[0m] [0m[32m- string take[0m[0m
+[0m[[0minfo[0m] [0m[32m- adding ints[0m[0m
+[0m[[0minfo[0m] [0m[32m- contains is implemented[0m[0m
+[0m[[0minfo[0m] [0m[32m- singletonSet(1) contains 1[0m[0m
+[0m[[0minfo[0m] [0m[32m- union contains all elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- intersect contains no elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- intersect contains elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- diff contains elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- filter contains elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- Forall contains elements[0m[0m
+[0m[[0minfo[0m] [0m[32m- forall: {1,3,4,5,7,1000} x => (x<5)[0m[0m
+[0m[[0minfo[0m] [0m[32m- Forall contains elements2[0m[0m
+[0m[[0minfo[0m] [0m[32m- exists[0m[0m
+[0m[[0minfo[0m] [0m[32m- exists: {1,2,3,4} x => (x == 2)[0m[0m
+[0m[[0minfo[0m] [0m[32m- map test[0m[0m
+[0m[[0minfo[0m] [0m[32m- map test2[0m[0m
+[0m[[0minfo[0m] [0m[32m- map : {1,3,4,5,7,1000}, x => (x-1)[0m[0m

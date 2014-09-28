@@ -1,0 +1,43 @@
+2014-09-19 19:44:02,197 ERROR [main] - org.scala-ide.sdt.core - org.scala-ide.sdt.core - org.scala-ide.sdt.core - 0 - Java Model Exception: Java Model Status [/example/src/main/scala/example/Main.scala already exists in target]
+2014-09-19 19:45:54,906 ERROR [Worker-9] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-19 19:45:54,907 ERROR [Worker-9] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-19 19:45:54,907 ERROR [Worker-9] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-19 22:40:54,904 ERROR [Worker-21] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-19 22:40:54,910 ERROR [Worker-21] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-19 22:40:54,911 ERROR [Worker-21] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-20 16:23:07,584  WARN [Worker-2] - ImplicitHighlightingPresenter - Timeout while waiting for `askLoadedTyped` during implicit highlighting.
+2014-09-20 16:51:32,634 ERROR [Worker-11] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-20 16:51:32,634 ERROR [Worker-11] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-20 16:51:32,635 ERROR [Worker-11] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-24 23:17:56,019 ERROR [Worker-48] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-24 23:17:56,024 ERROR [Worker-48] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-24 23:17:56,024 ERROR [Worker-48] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-26 23:13:44,824 ERROR [Worker-15] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-26 23:13:44,830 ERROR [Worker-15] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-26 23:13:44,831 ERROR [Worker-15] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-28 19:35:26,159 ERROR [Worker-0] - System.err - SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+2014-09-28 19:35:26,163 ERROR [Worker-0] - System.err - SLF4J: Defaulting to no-operation (NOP) logger implementation
+2014-09-28 19:35:26,164 ERROR [Worker-0] - System.err - SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+2014-09-28 21:11:14,893 ERROR [Worker-38] - System.err - Java Model Exception: Java Model Status [funsets does not exist]
+2014-09-28 21:11:14,900 ERROR [Worker-38] - System.err - at org.eclipse.jdt.internal.core.JavaElement.newNotPresentException(JavaElement.java:498)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at org.eclipse.jdt.internal.core.JavaModelManager.getPerProjectInfoCheckExistence(JavaModelManager.java:2309)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at org.eclipse.jdt.internal.core.JavaProject.getPerProjectInfo(JavaProject.java:1908)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at org.eclipse.jdt.internal.core.JavaProject.getRawClasspath(JavaProject.java:1930)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ClasspathManagement$class.jdkPaths(ClasspathManagement.scala:138)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.jdkPaths(ScalaProject.scala:80)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ClasspathManagement$class.scalaClasspath(ClasspathManagement.scala:118)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.scalaClasspath(ScalaProject.scala:80)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.setupCompilerClasspath(ScalaProject.scala:514)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.initializeCompilerSettings(ScalaProject.scala:500)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject$$anon$1.create(ScalaProject.scala:99)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject$$anon$1.create(ScalaProject.scala:95)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.util.Cached$class.apply(Cached.scala:30)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject$$anon$1.apply(ScalaProject.scala:95)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.withPresentationCompiler(ScalaProject.scala:594)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.ScalaProject.withSourceFile(ScalaProject.scala:603)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.InteractiveCompilationUnit$class.withSourceFile(InteractiveCompilationUnit.scala:66)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.javaelements.ScalaSourceFile.withSourceFile(ScalaSourceFile.scala:69)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.semantichighlighting.Presenter$SemanticHighlightingJob.performSemanticHighlighting(Presenter.scala:145)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at scala.tools.eclipse.semantichighlighting.Presenter$SemanticHighlightingJob.run(Presenter.scala:114)
+2014-09-28 21:11:14,901 ERROR [Worker-38] - System.err - at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53)
+2014-09-28 21:11:14,909 ERROR [main] - org.scala-ide.sdt.core - org.scala-ide.sdt.core - org.scala-ide.sdt.core - 0 - Java Model Exception: Java Model Status [funsets does not exist]

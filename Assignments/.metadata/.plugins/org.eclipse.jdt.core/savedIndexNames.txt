@@ -1,0 +1,2 @@
+INDEX VERSION 1.126+/Users/carlos/GitHub/Functional Programming Principles in Scala/Assignments/.metadata/.plugins/org.eclipse.jdt.core
+3182159717.index

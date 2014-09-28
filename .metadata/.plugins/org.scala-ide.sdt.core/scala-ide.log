@@ -1,0 +1,17 @@
+2014-09-18 22:24:39,428 ERROR [ForkJoinPool-1-worker-13] - System.err - WorksheetManager <actor>: caught java.lang.NullPointerException
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - java.lang.NullPointerException
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at org.scalaide.worksheet.ScriptCompilationUnit.scalaProject$lzycompute(ScriptCompilationUnit.scala:33)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at org.scalaide.worksheet.ScriptCompilationUnit.scalaProject(ScriptCompilationUnit.scala:33)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at org.scalaide.worksheet.runtime.WorksheetsManager.org$scalaide$worksheet$runtime$WorksheetsManager$$forwardIfEvaluatorExists(WorksheetsManager.scala:53)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at org.scalaide.worksheet.runtime.WorksheetsManager$$anonfun$act$1$$anonfun$apply$1.applyOrElse(WorksheetsManager.scala:34)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.runtime.AbstractPartialFunction$mcVL$sp.apply$mcVL$sp(AbstractPartialFunction.scala:33)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:33)
+2014-09-18 22:24:39,429 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.runtime.AbstractPartialFunction$mcVL$sp.apply(AbstractPartialFunction.scala:25)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.actors.ReactorTask.run(ReactorTask.scala:31)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.actors.ReactorTask.compute(ReactorTask.scala:63)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.RecursiveAction.exec(RecursiveAction.java:160)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.pollAndExecAll(ForkJoinPool.java:1253)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1346)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+2014-09-18 22:24:39,430 ERROR [ForkJoinPool-1-worker-13] - System.err - at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
