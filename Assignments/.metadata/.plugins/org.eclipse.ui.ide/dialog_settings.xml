@@ -7,6 +7,7 @@
 		<item value="false" key="WizardProjectsImportPage.STORE_COPY_PROJECT_ID"/>
 		<item value="false" key="WizardProjectsImportPage.STORE_NESTED_PROJECTS"/>
 		<list key="WizardProjectsImportPage.STORE_DIRECTORIES">
+			<item value="/Users/carlos/GitHub/Functional Programming Principles in Scala/Assignments/objsets"/>
 			<item value="/Users/carlos/GitHub/Functional Programming Principles in Scala/Assignments/funsets"/>
 			<item value="/Users/carlos/GitHub/Functional Programming Principles in Scala/Assignments/recfun"/>
 			<item value="/Users/carlos/GitHub/Functional Programming Principles in Scala/Assignments/example"/>

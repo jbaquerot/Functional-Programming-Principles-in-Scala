@@ -1,0 +1,9 @@
+package week4
+import week4._
+object lesson3 {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  def nth[T](n: Int, l: List[T]) = {
+		if (n<0) tro
+
+  }                                               //> nth: [T](n: Int, l: week4.List[T])week4.List[T]
+}

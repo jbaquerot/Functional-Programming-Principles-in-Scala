@@ -1,0 +1,11 @@
+package week4
+
+object lesson3 {
+  println("Welcome to the Scala worksheet")
+}
+
+def nth[T](n: Int, l: List[T]) ={
+  
+  l
+  
+}

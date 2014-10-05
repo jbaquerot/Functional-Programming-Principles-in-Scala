@@ -46,6 +46,8 @@ class TweetSetSuite extends FunSuite {
 
   test("union: set4c and set4d") {
     new TestSets {
+      //println("union: set4c and set4d")
+      //println(size(set4c.union(set4d)))
       assert(size(set4c.union(set4d)) === 4)
     }
   }
@@ -61,12 +63,35 @@ class TweetSetSuite extends FunSuite {
       assert(size(set1.union(set5)) === 4)
     }
   }
+  
+  test("mostRetweeted: empty set (1)") {
+    new TestSets {
+      val thrown = intercept[java.util.NoSuchElementException] {
+    	  set1.mostRetweeted
+      }
+      assert(thrown.getMessage === "mostRetweeted of Empty")
+    }
+  }
+  
+  test("mostRetweeted: set (2)") {
+    new TestSets {
+      //println("mostRetweet: " + set5.mostRetweeted.retweets)
+      assert(set5.mostRetweeted.retweets === 20)
+    }
+  }
 
   test("descending: set5") {
     new TestSets {
       val trends = set5.descendingByRetweet
       assert(!trends.isEmpty)
       assert(trends.head.user == "a" || trends.head.user == "b")
+    }
+  }
+  
+  test("remove: set5") {
+    new TestSets {
+      assert(size(set5.remove(c)) === 3)
+      assert(size(set5.remove(d)) === 3)
     }
   }
 }
