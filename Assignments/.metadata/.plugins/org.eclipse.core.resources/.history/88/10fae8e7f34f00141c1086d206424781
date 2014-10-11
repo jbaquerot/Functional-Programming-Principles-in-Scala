@@ -1,0 +1,4 @@
+object worksheet {
+  'a' < 'b'                                       //> res0: Boolean(true) = true
+  List((a,1), (b,1), (a,1), (b,1), (b,1))
+}

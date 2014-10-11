@@ -1,0 +1,115 @@
+package patmat
+
+import org.scalatest.FunSuite
+import common._
+import patmat.Huffman._
+
+object worksheet {
+    val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
+                                                  //> t1  : patmat.Huffman.Fork = Fork(Leaf(a,2),Leaf(b,3),List(a, b),5)
+    val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
+                                                  //> t2  : patmat.Huffman.Fork = Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),Leaf
+                                                  //| (d,4),List(a, b, d),9)
+		val trees = List(t1,t2)           //> trees  : List[patmat.Huffman.Fork] = List(Fork(Leaf(a,2),Leaf(b,3),List(a, b
+                                                  //| ),5), Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),Leaf(d,4),List(a, b, d),9)
+                                                  //| )
+    until(singleton,combine)(trees)               //> res0: patmat.Huffman.CodeTree = Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),
+                                                  //| Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),Leaf(d,4),List(a, b, d),9),List(
+                                                  //| a, b, a, b, d),14)
+    createCodeTree(string2Chars("cabbaa"))        //> res1: patmat.Huffman.CodeTree = Fork(Fork(Leaf(c,1),Leaf(b,2),List(c, b),3),
+                                                  //| Leaf(a,3),List(c, b, a),6)
+ 	  decode(createCodeTree(string2Chars("cabbaa")) , List(1,0,0,1,1,0,0,1,1))
+                                                  //> res2: List[Char] = List(a, c, b, a)
+ 	  println(decodedSecret)                  //> List(e, f, s, t, d, r, s, l, a, e, i, h)
+ 	  
+ 	  encode(t1)("abab".toList)               //> res3: List[patmat.Huffman.Bit] = List(0, 1, 0, 1)
+ 
+ 	  decode(t1, encode(t1)("ab".toList))     //> res4: List[Char] = List(a)
+ 	  
+ 	  def encodeChar(tree:CodeTree, c:Char, accum:List[Bit]): List[Bit] = tree match{
+ 	  	case Leaf(c1,w) => if (c == c1) accum
+ 	  										 else List()
+ 	    case Fork(ltree, rtree, arrchars, w) => encodeChar(ltree, c, 0::accum) ::: encodeChar(rtree, c, 1::accum).reverse
+ 	  }                                       //> encodeChar: (tree: patmat.Huffman.CodeTree, c: Char, accum: List[patmat.Huff
+                                                  //| man.Bit])List[patmat.Huffman.Bit]
+    encodeChar(t1, 'b', List())                   //> res5: List[patmat.Huffman.Bit] = List(1)
+    
+    
+    
+    
+   /* def decodeToChar(tree: CodeTree, bits: List[Bit]): Char = tree match{
+    	case Leaf(c, w) => c
+    	case Fork(ltree, rtree, arrchars, w) => bits match{
+    		case List() => throw new Error("error")
+    		case x::xs => if (x == 0) decodeToChar(ltree, xs)
+    									else decodeToChar(rtree, xs)
+    	}
+    }*/
+    def decodeToChar2(tree: CodeTree, bits: List[Bit]): Char = bits match{
+    	case List() => tree match{
+    								case Leaf(c,w) => c
+    								case Fork(ltree, rtree, arrchars, w) => throw new Error("decodeToChar: bits not correspond to any char")
+    								}
+    	case x::xs => tree match{
+    								case Leaf(c, w) => c
+    								case Fork(ltree, rtree, arrchars, w) => if (x == 0) decodeToChar2(ltree, xs)
+    																												else decodeToChar2(rtree, xs)
+    								}
+    }                                             //> decodeToChar2: (tree: patmat.Huffman.CodeTree, bits: List[patmat.Huffman.Bi
+                                                  //| t])Char
+    
+    decodeToChar2(t2,List(0,1,1))                 //> res6: Char = b
+    
+    def getNBits(tree: CodeTree, bits: List[Bit]): Int =  bits match{
+    	case List() => tree match{
+    								case Leaf(c,w) => 0
+    								case Fork(ltree, rtree, arrchars, w) => 0 //throw new Error("There no enoght bits to decode")
+    								}
+    	case x::xs => tree match{
+    								case Leaf(c, w) => 0
+    								case Fork(ltree, rtree, arrchars, w) => if (x == 0) 1+getNBits(ltree, xs)
+    																												else 1+getNBits(rtree, xs)
+    								}
+    }                                             //> getNBits: (tree: patmat.Huffman.CodeTree, bits: List[patmat.Huffman.Bit])In
+                                                  //| t
+   // decodeToChar(t2,getBits(t2, List(1,1,0,1,0)))
+    
+    val bits = List(0,1,0,1,0)                    //> bits  : List[Int] = List(0, 1, 0, 1, 0)
+    getNBits(t2,bits)                             //> res7: Int = 2
+    bits.take(getNBits(t2,bits))                  //> res8: List[Int] = List(0, 1)
+    bits.drop(getNBits(t2,bits))                  //> res9: List[Int] = List(0, 1, 0)
+    
+    def decode2(tree: CodeTree, bits: List[Bit]): List[Char] = {
+  //  try{
+    	val nBits = getNBits(tree, bits)
+    	if (nBits == 0) List()
+    	else decodeToChar2(t2,bits.take(nBits))::decode2(tree, bits.drop(nBits))
+  //  } catch {
+  //  	case er: Error => List()
+  //  }
+    
+    
+    }                                             //> decode2: (tree: patmat.Huffman.CodeTree, bits: List[patmat.Huffman.Bit])Lis
+                                                  //| t[Char]
+    //getNBits(t1, List())
+    val bitsBA = encode(t1)("ab".toList)          //> bitsBA  : List[patmat.Huffman.Bit] = List(0, 1)
+    getNBits(t1, bitsBA)                          //> res10: Int = 1
+    bitsBA.take(getNBits(t2,bits))                 //> res8: List[Int] = List(0, 1)
+    bitsBA.drop(getNBits(t2,bits))
+    decodeToChar2(t1, bitsBA )                    //> res11: Char = a
+    decode2(t1, bitsBA)                           //> java.lang.Error: decodeToChar: bits not correspond to any char
+                                                  //| 	at patmat.worksheet$$anonfun$main$1.decodeToChar2$1(patmat.worksheet.sca
+                                                  //| la:41)
+                                                  //| 	at patmat.worksheet$$anonfun$main$1.decode2$1(patmat.worksheet.scala:74)
+                                                  //| 
+                                                  //| 	at patmat.worksheet$$anonfun$main$1.apply$mcV$sp(patmat.worksheet.scala:
+                                                  //| 85)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$$anonfun$$exe
+                                                  //| cute$1.apply$mcV$sp(WorksheetSupport.scala:76)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.redirected(W
+                                                  //| orksheetSupport.scala:65)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.$execute(Wor
+                                                  //| ksheetSupport.scala:75)
+                                                  //| 	at patmat.worksheet$.main(patmat.worksheet.scala:7)
+                                                  //| 	at patmat.worksheet.main(patmat.worksheet.scala)
+}

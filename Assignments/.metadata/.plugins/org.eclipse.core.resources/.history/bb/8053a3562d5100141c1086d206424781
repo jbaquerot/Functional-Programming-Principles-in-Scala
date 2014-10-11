@@ -1,0 +1,33 @@
+package patmat
+
+import org.scalatest.FunSuite
+import common._
+import patmat.Huffman._
+
+object worksheet {
+    val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
+                                                  //> t1  : patmat.Huffman.Fork = Fork(Leaf(a,2),Leaf(b,3),List(a, b),5)
+    val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
+                                                  //> t2  : patmat.Huffman.Fork = Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),Leaf
+                                                  //| (d,4),List(a, b, d),9)
+		val trees = List(t1,t2)           //> trees  : List[patmat.Huffman.Fork] = List(Fork(Leaf(a,2),Leaf(b,3),List(a, b
+                                                  //| ),5), Fork(Fork(Leaf(a,2),Leaf(b,3),List(a, b),5),Leaf(d,4),List(a, b, d),9)
+                                                  //| )
+    
+    println(decodedSecret)                        //> List(h, u, f, f, m, a, n, e, s, t, c, o, o, l)
+    
+    val table = convert(t2)                       //> table  : patmat.Huffman.CodeTable = List((a,List(0, 0)), (b,List(0, 1)), (d,
+                                                  //| List(1)))
+    codeBits(table)('d')                          //> java.lang.Error: codeBits: char doesn't find in table
+                                                  //| 	at patmat.Huffman$.codeBits(Huffman.scala:270)
+                                                  //| 	at patmat.worksheet$$anonfun$main$1.apply$mcV$sp(patmat.worksheet.scala:
+                                                  //| 15)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$$anonfun$$exe
+                                                  //| cute$1.apply$mcV$sp(WorksheetSupport.scala:76)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.redirected(W
+                                                  //| orksheetSupport.scala:65)
+                                                  //| 	at org.scalaide.worksheet.runtime.library.WorksheetSupport$.$execute(Wor
+                                                  //| ksheetSupport.scala:75)
+                                                  //| 	at patmat.worksheet$.main(patmat.worksheet.scala:7)
+                                                  //| 	at patmat.worksheet.main(patmat.worksheet.scala)
+}

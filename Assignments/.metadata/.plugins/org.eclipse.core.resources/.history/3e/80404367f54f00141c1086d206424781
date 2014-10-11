@@ -1,0 +1,12 @@
+import common._
+
+object worksheet {
+  'a' < 'b'                                       //> res0: Boolean(true) = true
+  var l = List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1))
+                                                  //> l  : List[(Char, Int)] = List((a,1), (b,1), (a,1), (b,1), (b,1))
+  //msort((c,n): (Char, Int), (c1,n1): (Char, Int) => c < c1)(List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1)))
+ l sortWith((_,_)._1 > (_,_)._1)
+  List(1, -3, 4, 2, 6) sortWith (_ < _)           //> res1: List[Int] = List(-3, 1, 2, 4, 6)
+  (1,5)._1                                        //> res2: Int = 1
+
+}

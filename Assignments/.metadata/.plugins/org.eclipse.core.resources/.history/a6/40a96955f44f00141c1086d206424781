@@ -1,0 +1,5 @@
+object worksheet {
+  'a' < 'b'                                       //> res0: Boolean(true) = true
+  var l = List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1))
+                                                  //> l  : List[(Char, Int)] = List((a,1), (b,1), (a,1), (b,1), (b,1))
+}

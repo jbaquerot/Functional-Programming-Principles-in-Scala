@@ -1,0 +1,76 @@
+package patmat
+
+import org.scalatest.FunSuite
+import common._
+import patmat.Huffman._
+
+object worksheet {
+    val t1 = Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5)
+    val t2 = Fork(Fork(Leaf('a',2), Leaf('b',3), List('a','b'), 5), Leaf('d',4), List('a','b','d'), 9)
+		val trees = List(t1,t2)
+    until(singleton,combine)(trees)
+    createCodeTree(string2Chars("cabbaa"))
+ 	  decode(createCodeTree(string2Chars("cabbaa")) , List(1,0,0,1,1,0,0,1,1))
+ 	  println(decodedSecret)
+ 	  
+ 	  encode(t1)("abab".toList)
+ 
+ 	  decode(t1, encode(t1)("ab".toList))
+ 	  
+ 	  def encodeChar(tree:CodeTree, c:Char, accum:List[Bit]): List[Bit] = tree match{
+ 	  	case Leaf(c1,w) => if (c == c1) accum
+ 	  										 else List()
+ 	    case Fork(ltree, rtree, arrchars, w) => encodeChar(ltree, c, 0::accum) ::: encodeChar(rtree, c, 1::accum).reverse
+ 	  }
+    encodeChar(t1, 'b', List())
+    
+    
+    
+    
+    def decodeToChar(tree: CodeTree, bits: List[Bit]): Char = tree match{
+    	case Leaf(c, w) => c
+    	case Fork(ltree, rtree, arrchars, w) => bits match{
+    		case List() => throw new Error("error")
+    		case x::xs => if (x == 0) decodeToChar(ltree, xs)
+    									else decodeToChar(rtree, xs)
+    	}
+    }
+    def decodeToChar2(tree: CodeTree, bits: List[Bit]): Char = bits match{
+    	case List() => tree match{
+    								case Leaf(c,w) => c
+    								case Fork(ltree, rtree, arrchars, w) => throw new Error("error")
+    								}
+    	case x::xs => tree match{
+    								case Leaf(c, w) => c
+    								case Fork(ltree, rtree, arrchars, w) => if (x == 0) decodeToChar2(ltree, xs)
+    																												else decodeToChar2(rtree, xs)
+    								}
+    }
+    
+    decodeToChar(t2,List(0,1,1))
+    
+    def getNBits(tree: CodeTree, bits: List[Bit]): Int =  bits match{
+    	case List() => tree match{
+    								case Leaf(c,w) => 0
+    								case Fork(ltree, rtree, arrchars, w) => throw new Error("error")
+    								}
+    	case x::xs => tree match{
+    								case Leaf(c, w) => 0
+    								case Fork(ltree, rtree, arrchars, w) => if (x == 0) 1+getNBits(ltree, xs)
+    																												else 1+getNBits(rtree, xs)
+    								}
+    }
+   // decodeToChar(t2,getBits(t2, List(1,1,0,1,0)))
+    
+    val bits = List(0,1,0,1,0)
+    getNBits(t2,bits)
+    bits.take(getNBits(t2,bits))
+    bits.drop(getNBits(t2,bits))
+    
+    def decode(tree: CodeTree, bits: List[Bit]): List[Char] = {
+    val nBits = getNBits(tree, bits)
+    if (nBits == 0) List()
+    else decodeToChar(t2,bits.take(nBits))::decode(tree, bits.drop(nBits))
+    
+    }
+}

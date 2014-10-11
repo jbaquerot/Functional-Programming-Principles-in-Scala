@@ -56,8 +56,7 @@ abstract class TweetSet {
    * and be implemented in the subclasses? abstract
    */
    def union(that: TweetSet): TweetSet = filterAcc( p => true, that)
-  //def union(that: TweetSet): TweetSet
-/*  def unionAcc(that: TweetSet, acc: TweetSet): TweetSet*/
+   
   /**
    * Returns the tweet from this set which has the greatest retweet count.
    *
@@ -80,6 +79,7 @@ abstract class TweetSet {
    * Question: Should we implment this method here, or should it remain abstract
    * and be implemented in the subclasses? subclasses
    */
+/*  def descendingByRetweetAcc(tail: TweetList): TweetList*/
   def descendingByRetweet: TweetList
 
 
@@ -117,13 +117,11 @@ class Empty extends TweetSet {
 
   def filterAcc(p: Tweet => Boolean, acc: TweetSet): TweetSet = acc
   
-  //def union(that: TweetSet): TweetSet = that
-  
-  /*def unionAcc(that: TweetSet, acc: TweetSet): TweetSet = acc*/
-  
   def mostRetweeted: Tweet = throw new java.util.NoSuchElementException("mostRetweeted of Empty")
 
   def mostRetweetedAcc(t: Tweet) = t
+  
+/*  def descendingByRetweetAcc(tail: TweetList): TweetList = tail*/
   
   def descendingByRetweet: TweetList = Nil
 
@@ -154,28 +152,18 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
       this.left.filterAcc(p, this.right.filterAcc(p, acc))
   }
   
-/*  def unionAcc(that: TweetSet, acc: TweetSet): TweetSet ={
-    var uL = that.unionAcc(this.left, acc)
-    var uR = uL.unionAcc(this.right, acc)
-    uR.incl(this.elem)
-    
-    this.left.unionAcc(this.right, acc).incl(this.elem)
-
-  }*/
-  
- /* def union(that: TweetSet): TweetSet ={
-    //this.unionAcc(that, that)
-    
-	new NonEmpty(this.elem, that.union(this.left), this.right)
-  }*/
   
   def mostRetweetedAcc(t: Tweet): Tweet ={
-    var mRL = this.left.mostRetweetedAcc(t)
-    
-    if (this.elem.retweets > mRL.retweets)
-      this.elem
+    val mRL = this.left.mostRetweetedAcc(t)
+    val mRR = this.right.mostRetweetedAcc(t)
+    if (this.elem.retweets > mRL.retweets){
+    	if (this.elem.retweets > mRR.retweets){
+    	  this.elem
+      }
+    	else mRR
+    }
+      
       else{
-        var mRR = this.right.mostRetweetedAcc(t)
         if (mRL.retweets > mRR.retweets)
           mRL
           else mRR
@@ -188,11 +176,16 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
      this.mostRetweetedAcc(new Tweet("","",-1))
   }
   
+/*  def descendingByRetweetAcc(tail: TweetList): TweetList{
+    var mr = this.mostRetweeted
+    var tail = this.remove(mr)
+    new Cons(mr, tail)
+  }*/
   
   def descendingByRetweet: TweetList = {
     var mr = this.mostRetweeted
-    var tail = this.remove(mr)
-    new Cons( mr , tail.descendingByRetweet)
+    var tail = this.remove(mr).descendingByRetweet
+    new Cons( mr , tail)
   }
 
   /**
@@ -258,12 +251,14 @@ object GoogleVsApple {
    * A list of all tweets mentioning a keyword from either apple or google,
    * sorted by the number of retweets.
    */
+  lazy val GoogleAndApple: TweetSet = googleTweets.union(appleTweets)
   lazy val trending: TweetList = googleTweets.union(appleTweets).descendingByRetweet
    
 }
 
 object Main extends App {
   // Print the trending tweets
+/*
   println("--------------------------")
   println("Google Tweets")
   println("--------------------------")
@@ -271,10 +266,21 @@ object Main extends App {
    println("--------------------------")
   println("Apple Tweets")
   println("--------------------------")
-  GoogleVsApple.appleTweets foreach println
+  GoogleVsApple.appleTweets foreach println*/
+  
+ /* println("--------------------------")
+  println("Google And Apple")
    println("--------------------------")
+  GoogleVsApple.GoogleAndApple foreach println*/
+  
+/*   println("--------------------------")
   println("Google vs Apple")
    println("--------------------------")
-  GoogleVsApple.trending foreach println
+  GoogleVsApple.trending foreach println*/
+  
+  println("--------------------------")
+  println("Google Tweets descending By Retweet")
+  println("--------------------------")
+  GoogleVsApple.googleTweets.descendingByRetweet foreach println
   
 }

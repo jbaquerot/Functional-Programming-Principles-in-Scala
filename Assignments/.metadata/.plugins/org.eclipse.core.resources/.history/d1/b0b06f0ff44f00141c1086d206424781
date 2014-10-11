@@ -1,0 +1,4 @@
+object worksheet {
+  'a' < 'b'
+  var l = List((a,1), (b,1), (a,1), (b,1), (b,1))
+}

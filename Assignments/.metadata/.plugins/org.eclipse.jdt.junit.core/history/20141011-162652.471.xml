@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="HuffmanSuite" project="patmat" tests="10" started="10" failures="0" errors="0" ignored="0">
+  <testsuite name="patmat.HuffmanSuite" time="0.031">
+    <testcase name="weight of a larger tree" classname="patmat.HuffmanSuite" time="0.001"/>
+    <testcase name="chars of a larger tree" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="string2chars" classname="&quot;hello, world&quot;" time="0.0"/>
+    <testcase name="times" classname="string2Chars(&quot;abbab&quot;" time="0.0"/>
+    <testcase name="makeOrderedLeafList for some frequency table" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="combine of some leaf list" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="until trees are singleton, combine" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="decode and encode a very short text should be identity" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="encode some short text with frenchCode" classname="patmat.HuffmanSuite" time="0.0"/>
+    <testcase name="decode and encode some longer text should be identity" classname="patmat.HuffmanSuite" time="0.03"/>
+  </testsuite>
+</testrun>
