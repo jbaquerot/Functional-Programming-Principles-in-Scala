@@ -1,3 +1,0 @@
-object worksheet {
-  'a' < 'b'                                       //> res0: Boolean(true) = true
-}

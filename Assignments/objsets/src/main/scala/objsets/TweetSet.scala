@@ -112,6 +112,7 @@ abstract class TweetSet {
 }
 
 class Empty extends TweetSet {
+  def isEmpty = true
   
   def filter(p: Tweet => Boolean): TweetSet  = new Empty
 
@@ -121,8 +122,7 @@ class Empty extends TweetSet {
 
   def mostRetweetedAcc(t: Tweet) = t
   
-/*  def descendingByRetweetAcc(tail: TweetList): TweetList = tail*/
-  
+  def descendingByRetweetAcc(ac: TweetList): TweetList = ac
   def descendingByRetweet: TweetList = Nil
 
   /**
@@ -139,8 +139,9 @@ class Empty extends TweetSet {
 }
 
 class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
-
-  def filter(p: Tweet => Boolean): TweetSet  = {
+	def isEmpty = false
+  
+	def filter(p: Tweet => Boolean): TweetSet  = {
     filterAcc(p, new Empty)   
   }
   
@@ -154,20 +155,14 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
   
   
   def mostRetweetedAcc(t: Tweet): Tweet ={
-    val mRL = this.left.mostRetweetedAcc(t)
-    val mRR = this.right.mostRetweetedAcc(t)
-    if (this.elem.retweets > mRL.retweets){
-    	if (this.elem.retweets > mRR.retweets){
-    	  this.elem
-      }
-    	else mRR
+
+    if (this.elem.retweets > t.retweets){
+      //this.left.mostRetweetedAcc(this.elem)
+      this.right.mostRetweetedAcc(this.left.mostRetweetedAcc(this.elem))
+    } else {
+      this.right.mostRetweetedAcc(this.left.mostRetweetedAcc(t))
     }
-      
-      else{
-        if (mRL.retweets > mRR.retweets)
-          mRL
-          else mRR
-      }
+    
         
       
   }
@@ -176,16 +171,15 @@ class NonEmpty(elem: Tweet, left: TweetSet, right: TweetSet) extends TweetSet {
      this.mostRetweetedAcc(new Tweet("","",-1))
   }
   
-/*  def descendingByRetweetAcc(tail: TweetList): TweetList{
-    var mr = this.mostRetweeted
-    var tail = this.remove(mr)
-    new Cons(mr, tail)
-  }*/
+//  def descendingByRetweetAcc(ac: TweetList): TweetList = {
+		
+ // }
   
   def descendingByRetweet: TweetList = {
-    var mr = this.mostRetweeted
-    var tail = this.remove(mr).descendingByRetweet
-    new Cons( mr , tail)
+    //this.descendingByRetweetAcc(Nil)
+    //val mr = this.mostRetweeted
+	//val tail = this.remove(mr)
+	new Cons(this.mostRetweeted, this.remove(this.mostRetweeted).descendingByRetweet)
   }
 
   /**
@@ -279,8 +273,12 @@ object Main extends App {
   GoogleVsApple.trending foreach println*/
   
   println("--------------------------")
-  println("Google Tweets descending By Retweet")
+  println("GoogleVsApple Tweets descending By Retweet")
   println("--------------------------")
-  GoogleVsApple.googleTweets.descendingByRetweet foreach println
+  GoogleVsApple.trending foreach println
   
+  println("--------------------------")
+  println("GoogleAndApple mostRetweet")
+  println("--------------------------")
+  println(GoogleVsApple.GoogleAndApple.mostRetweeted)
 }

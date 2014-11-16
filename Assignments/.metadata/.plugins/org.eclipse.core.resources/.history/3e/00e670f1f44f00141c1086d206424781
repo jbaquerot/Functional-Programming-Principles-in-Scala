@@ -1,8 +1,0 @@
-import common._
-
-object worksheet {
-  'a' < 'b'
-  var l = List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1))
-  msort((c,n): (Char, Int), (c1,n1): (Char, Int) => c < c1)(List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1)))
- 
-}

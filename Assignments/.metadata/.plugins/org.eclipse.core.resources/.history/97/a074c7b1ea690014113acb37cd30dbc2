@@ -1,0 +1,8 @@
+package week7
+
+class Pouring(capacity: Vector[Int]) {
+
+  type States = Vector[Int]
+  val initialState = capacity map(x => 0)
+  
+}

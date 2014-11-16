@@ -1,7 +1,0 @@
-object worksheet {
-  'a' < 'b'                                       //> res0: Boolean(true) = true
-  var l = List(('a',1), ('b',1), ('a',1), ('b',1), ('b',1))
-  msort((c,n): (Char, Int), (c1,n1): (Char, Int) => c < c1)(l)
- 
-                                                  //> l  : List[(Char, Int)] = List((a,1), (b,1), (a,1), (b,1), (b,1))
-}

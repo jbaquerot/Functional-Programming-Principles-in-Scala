@@ -1,0 +1,5 @@
+package streams
+import Bloxorz._
+object test {
+	BloxorzSuite
+}

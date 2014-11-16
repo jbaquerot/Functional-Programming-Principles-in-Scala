@@ -1,0 +1,25 @@
+val v = Vector(1,4,5,6)
+v = Vector(1,4,5,6)
+scala
+cd ..
+exit
+help
+Vector(1,2,3)
+shell
+cd ..
+pwd
+scala-home
+scala-instance
+console
+val v = Vector(1,2,3,6)
+Vector(1,2,3)
+exit
+scala
+exit
+compile
+test
+submit jbaquerot@gmail.com sHBF5hbxY8
+exit
+compile
+test
+submit jbaquerot@gmail.com sHBF5hbxY8

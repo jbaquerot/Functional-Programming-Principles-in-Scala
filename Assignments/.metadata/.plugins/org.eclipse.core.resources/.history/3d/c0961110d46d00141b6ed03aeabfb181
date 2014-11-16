@@ -1,0 +1,17 @@
+package streams
+import Bloxorz._
+
+object test {
+
+def expr = {
+	val x={ print('x'); 1}
+	lazy val y = { print('y'); 2 }
+	def z = { print('z'); 3 }
+	z+y+x+z+y+x
+}
+
+object InfiniteLevel extends Solver with InfiniteTerrain {
+    val startPos = Pos(1,3)
+    val goal = Pos(5,8)
+  }
+}

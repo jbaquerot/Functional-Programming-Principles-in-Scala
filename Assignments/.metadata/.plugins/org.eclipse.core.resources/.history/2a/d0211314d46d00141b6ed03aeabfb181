@@ -1,0 +1,13 @@
+package streams
+import Bloxorz._
+
+object test {
+                                                  //> expr: => Int
+
+object InfiniteLevel extends Solver with InfiniteTerrain {
+    val startPos = Pos(1,3)
+    val goal = Pos(5,8)
+  }
+  
+  
+}
